@@ -1,5 +1,5 @@
 # Bi-directional Attention Flow for Machine Comprehension
-- This is a copy of the original implementation of [Bi-directional Attention Flow for Machine Comprehension][paper] (Seo et al., 2016).
+- This is a personal copy of the original implementation of [Bi-directional Attention Flow for Machine Comprehension][paper] (Seo et al., 2016).
 - This is tensorflow v1.4.0 comaptible version. 
 
 ## 0. Requirements
@@ -16,6 +16,8 @@
 ## 1. Pre-processing
 First, prepare data. Donwload SQuAD data and GloVe and nltk corpus
 (~850 MB, this will download files to `$HOME/data`):
+Note that the official link in the download.sh is changed to be my own modified training data.
+
 ```
 chmod +x download.sh; ./download.sh
 ```
@@ -46,6 +48,8 @@ python -m basic.cli --mode train --noload
 You can speed up the training process with optimization flags:
 ```
 python -m basic.cli --mode train --noload --len_opt --cluster
+
+python -m basic.cli --mode train --noload --len_opt --cluster --num_gpus 1 --batch_size 233 --num_steps 23333
 ```
 You can still omit them, but training will be much slower.
 
